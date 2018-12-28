@@ -8263,13 +8263,13 @@ ra-core@^2.5.2:
     redux-saga "~0.16.0"
     reselect "~3.0.0"
 
-ra-data-json-server@^2.5.2:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-2.5.2.tgz#3fc0ac6b59859829d7e529168af3d135992d72c5"
-  integrity sha512-yMO86SkP4PpNLHSlMdfUBdeNVDuFAIh8v+OgSpyA8anlqV3nnRXi53CJoxIfUt4pY73GV9CvPskTyIRjJbSzRw==
+ra-data-drf@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ra-data-drf/-/ra-data-drf-1.0.1.tgz#3ca64aa5030880f4db8baa78e8d901706d9d834a"
+  integrity sha512-NV7TsVgpraUlwe1Y9+TNkcdYefshsi5xJRz2jxTcoXEIysEjlcC59w2MUzg77JbAIsG1dcEuOAzZOAocvgLx8g==
   dependencies:
     query-string "~5.1.1"
-    react-admin "^2.5.2"
+    react-admin "^2.4.1"
 
 ra-language-english@^2.3.0:
   version "2.3.0"
@@ -8364,7 +8364,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-admin@^2.5.2:
+react-admin@^2.4.1, react-admin@^2.5.2:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-2.5.2.tgz#1c409ee7cb9c6ebf41660e776a30dc1510a0cc0b"
   integrity sha512-O0w3J/deWvV3eGRlrwXk1riksC21cm33kse3/covkfzQ5IoJkZdQoY/JHVwDU/hFnM9fOpZ/8ncA2PZUKuVVWA==
