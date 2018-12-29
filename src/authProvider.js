@@ -15,19 +15,35 @@ export default (type, params) => {
                 }
                 return response.json();
             })
-            .then(({ access }) => {
+            .then(({ access, refresh }) => {
                 localStorage.setItem('token', access);
+                localStorage.setItem('refresh-token', refresh);
             });
     }
     if (type === AUTH_LOGOUT) {
         localStorage.removeItem('token');
+        localStorage.removeItem('refresh-token');
         return Promise.resolve();
     }
     if (type === AUTH_ERROR) {
         const status  = params.status;
         if (status === 401 || status === 403) {
-            localStorage.removeItem('token');
-            return Promise.reject();
+            return fetch('http://localhost:8080/api/token/refresh/', {
+                method: 'GET',
+                headers: {Accept: 'application/json'},
+                Authorization: "Bearer " + localStorage.getItem('refresh-token'),
+            }).then(response => {
+                if (response.status < 200 || response.status >= 300) {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('refresh-token');
+                    throw new Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then(({ access, refresh }) => {
+                localStorage.setItem('token', access);
+                localStorage.setItem('refresh-token', refresh);
+            });
         }
         return Promise.resolve();
     }
