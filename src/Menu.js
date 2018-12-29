@@ -6,6 +6,7 @@ import compose from 'recompose/compose';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 import DefaultIcon from '@material-ui/icons/ViewList';
+import SettingsIcon from '@material-ui/icons/Settings';
 import { 
     getResources,
     translate,
@@ -63,6 +64,18 @@ const Menu = ({
                     dense={dense}
                 />
             ))}
+        <MenuItemLink
+            to="/analysis"
+            primaryText='Analysis'
+            leftIcon={<SettingsIcon />}
+            onClick={onMenuClick}
+            />
+        <MenuItemLink
+            to="/setting"
+            primaryText='Setting'
+            leftIcon={<SettingsIcon />}
+            onClick={onMenuClick}
+            />
         <Responsive xsmall={logout} medium={null} />
     </div>
 );
