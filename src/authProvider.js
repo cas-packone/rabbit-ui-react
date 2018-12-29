@@ -29,9 +29,9 @@ export default (type, params) => {
         const status  = params.status;
         if (status === 401 || status === 403) {
             return fetch('http://localhost:8080/api/token/refresh/', {
-                method: 'GET',
-                headers: {Accept: 'application/json'},
-                Authorization: "Bearer " + localStorage.getItem('refresh-token'),
+                method: 'POST',
+                body: JSON.stringify({refresh: localStorage.getItem('refresh-token')}),
+                headers: new Headers({ 'Content-Type': 'application/json' }),
             }).then(response => {
                 if (response.status < 200 || response.status >= 300) {
                     localStorage.removeItem('token');
@@ -40,9 +40,8 @@ export default (type, params) => {
                 }
                 return response.json();
             })
-            .then(({ access, refresh }) => {
+            .then(({ access }) => {
                 localStorage.setItem('token', access);
-                localStorage.setItem('refresh-token', refresh);
             });
         }
         return Promise.resolve();
