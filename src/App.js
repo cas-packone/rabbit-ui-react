@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { fetchUtils, Admin, Resource, ListGuesser } from 'react-admin';
 import drfProvider from 'ra-data-drf';
 import Dashboard from './Dashboard';

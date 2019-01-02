@@ -17,7 +17,7 @@ import {
     SelectInput,
     ReferenceInput,
     Filter,
-    BooleanInput
+    NullableBooleanInput
 } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Icon from '@material-ui/icons/Bookmark';
@@ -34,7 +34,7 @@ const DatasetFilter = (props) => (
         <ReferenceInput source="source" reference="space/datasources" alwaysOn>
             <SelectInput optionText="name" />
         </ReferenceInput>
-        <BooleanInput label="Public" source="public" alwaysOn />
+        <NullableBooleanInput label="Public" source="public" alwaysOn />
     </Filter>
 );
 
@@ -42,13 +42,13 @@ export const DatasetList = withStyles(listStyles)(({ classes, ...props }) => (
     <List {...props} sort={{ field: 'name', order: 'ASC' }} filters={<DatasetFilter />}>
         <Datagrid>
             <TextField source="id" />
-            <TextField source="name" className={classes.name} />
+            <TextField source="name" />
             <ReferenceField source="source" reference="space/datasources">
                 <TextField source="name" />
             </ReferenceField>
             <TextField style={{maxWidth:"8em", overflow: "hidden", textOverflow: 'ellipsis'}} source="uri" />
-            <ChipField label="type" source="type_name" />
-            <NumberField label="size (M)" source="size" />
+            <ChipField label="Type" source="type_name" />
+            <NumberField label="Size (M)" source="size" />
             <TextField source="owner" />
             <DateField source="modified_time" />
             <TextField source="remark" />
