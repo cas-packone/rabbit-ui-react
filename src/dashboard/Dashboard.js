@@ -3,7 +3,9 @@ import { Responsive, Title } from 'react-admin';
 import { get } from '../authProvider'
 
 import Indicator from './Indicator';
-import MonthLine, { getLineData } from './MonthLine';
+import MonthLine from './MonthLine';
+import { getLineData, getPublicDatasetPieData } from './Utils';
+import Pie from './Pie';
 import DollarIcon from '@material-ui/icons/AttachMoney';
 
 const styles = {
@@ -25,12 +27,11 @@ class Dashboard extends Component {
         get('space/state')
             .then(({space, dataset, instance}) => {
                 this.setState({space, dataset, instance});
-                console.log(this.state.dataset.month_size)
         });
     };
 
     render() {
-        const {space, dataset, instance, lineData} = this.state;
+        const {space, dataset, instance} = this.state;
         return (
             <Fragment>
                 <Title title="Rabbit Dashboard" />
@@ -43,7 +44,8 @@ class Dashboard extends Component {
                                     <Indicator icon={DollarIcon} value={dataset.total_cnt} />
                                     <Indicator icon={DollarIcon} value={instance.total_cnt} />
                                 </div>
-                                <div style={styles.singleCol}>
+                                <div style={styles.flex}>
+                                    <Pie data={getPublicDatasetPieData(dataset.public_size)} label='Public/Private Dataset Size' />
                                     <MonthLine data={getLineData(dataset.month_size, ' Monthly Dataset Size', 'modified_time__month', 'size')} label='Dataset Size'/>
                                 </div>
                             </div>
