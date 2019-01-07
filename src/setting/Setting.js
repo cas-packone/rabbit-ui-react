@@ -24,7 +24,10 @@ const Configuration = ({
     <Card>
         <Title title='Setting' />
         <CardContent>
-            <div className={classes.label}>{translate('pos.theme.name')}</div>
+            <div className={classes.label}>{translate('pos.location.name')}</div>
+            <div className={classes.label}>{translate('pos.credential.name')}</div>
+            <div className={classes.label}>{translate('pos.image.name')}</div>
+            <div className={classes.label}>{translate('pos.blueprint.name')}</div>
             <Button
                 variant="raised"
                 className={classes.button}
@@ -43,6 +46,8 @@ const Configuration = ({
             </Button>
         </CardContent>
         <CardContent>
+            <div className={classes.label}>{translate('pos.profile')}</div>
+            <div className={classes.label}>{translate('pos.balance')}</div>
             <div className={classes.label}>{translate('pos.language')}</div>
             <Button
                 variant="raised"

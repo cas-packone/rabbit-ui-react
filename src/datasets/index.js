@@ -31,7 +31,7 @@ const listStyles = {
 const DatasetFilter = (props) => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
-        <ReferenceInput source="source" reference="space/datasources" alwaysOn>
+        <ReferenceInput source="source" reference="datasources" alwaysOn>
             <SelectInput optionText="name" />
         </ReferenceInput>
         <NullableBooleanInput label="Public" source="public" alwaysOn />
@@ -43,7 +43,7 @@ export const DatasetList = withStyles(listStyles)(({ classes, ...props }) => (
         <Datagrid>
             <TextField source="id" />
             <TextField source="name" />
-            <ReferenceField source="source" reference="space/datasources">
+            <ReferenceField source="source" reference="datasources">
                 <TextField source="name" />
             </ReferenceField>
             <TextField style={{maxWidth:"8em", overflow: "hidden", textOverflow: 'ellipsis'}} source="uri" />
@@ -78,7 +78,7 @@ export const DatasetEdit = props => (
 export const DatasetCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <ReferenceInput source="source" reference="space/datasources">
+            <ReferenceInput source="source" reference="datasources">
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput source="name" required />

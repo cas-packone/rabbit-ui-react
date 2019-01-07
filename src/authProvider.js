@@ -1,4 +1,19 @@
-import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR } from 'react-admin';
+import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from 'react-admin';
+
+export const get = (url) => {
+    return fetch('http://localhost:8080/api/'+url+'/', {
+        method: "GET",
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem('token'),
+            'Content-Type': 'application/json'
+        }),
+    }).then(response => {
+        if (response.status === 401 || response.status === 403) {
+            return Promise.reject({ redirectTo: '/login' });
+        }
+        return response.json();
+    })
+}
 
 export default (type, params) => {
     if (type === AUTH_LOGIN) {
@@ -7,7 +22,7 @@ export default (type, params) => {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
-        })
+        });
         return fetch(request)
             .then(response => {
                 if (response.status < 200 || response.status >= 300) {
@@ -42,9 +57,13 @@ export default (type, params) => {
             })
             .then(({ access }) => {
                 localStorage.setItem('token', access);
+                window.location.reload()
             });
         }
         return Promise.resolve();
     }
-    return Promise.resolve();
+    if (type === AUTH_CHECK) {
+        return localStorage.getItem('token') ? Promise.resolve() : Promise.reject({ redirectTo: '/login' });
+    }
+    return Promise.reject('Unknown method');
 }
