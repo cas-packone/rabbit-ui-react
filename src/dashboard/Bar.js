@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { translate } from 'react-admin';
-import { Pie } from 'react-chartjs';
+import { Bar } from 'react-chartjs';
 
 const styles = {
     main: {
@@ -19,17 +19,17 @@ const styles = {
     },
 };
 
-const PieChart = ({ data, label, translate, classes }) => (
+const BarChart = ({ data, label, translate, classes }) => (
     <div className={classes.main}>
         <Card className={classes.card}>
             <Typography className={classes.title} color="textSecondary">
                 {translate('pos.dashboard.'+label)}
             </Typography>
             <Typography variant="headline" component="h2">
-                <Pie data={data} width="200" height="250" />
+                <Bar data={data} width="400" height="250" />
             </Typography>
         </Card>
     </div>
 );
 
-export default translate(withStyles(styles)(PieChart));
+export default translate(withStyles(styles)(BarChart));

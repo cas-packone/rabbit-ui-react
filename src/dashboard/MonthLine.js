@@ -26,7 +26,7 @@ const MonthLine = ({ data, label, translate, classes }) => (
                 {translate('pos.dashboard.'+label)}
             </Typography>
             <Typography variant="headline" component="h2">
-                <Line data={data} redraw width="600" height="250"/>
+                <Line data={data} redraw width="400" height="250"/>
             </Typography>
         </Card>
     </div>

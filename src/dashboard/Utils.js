@@ -46,3 +46,27 @@ export const getPublicDatasetPieData = (list=null) => {
     }
     ];
 }
+
+export const getBarData = (list=null, label='', keyKey=null, value_key=null) => {
+    var labels=[];
+    var data=[];
+    if (list){
+        list.map(item => {
+            labels.push(item[keyKey]);
+            data.push(item[value_key]);
+        });
+    }
+    return {
+        labels,
+        datasets: [
+            {
+                label,
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data
+            }
+        ]
+    }
+}

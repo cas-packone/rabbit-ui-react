@@ -4,8 +4,9 @@ import { get } from '../authProvider'
 
 import Indicator from './Indicator';
 import MonthLine from './MonthLine';
-import { getLineData, getPublicDatasetPieData } from './Utils';
+import { getLineData, getPublicDatasetPieData, getBarData } from './Utils';
 import Pie from './Pie';
+import Bar from './Bar'
 import DollarIcon from '@material-ui/icons/AttachMoney';
 
 const styles = {
@@ -47,6 +48,11 @@ class Dashboard extends Component {
                                 <div style={styles.flex}>
                                     <Pie data={getPublicDatasetPieData(dataset.public_size)} label='Public/Private Dataset Size' />
                                     <MonthLine data={getLineData(dataset.month_size, ' Monthly Dataset Size', 'modified_time__month', 'size')} label='Dataset Size'/>
+                                </div>
+                                <div style={styles.flex}>
+                                    <Bar data={getBarData(instance.dataset_cnt, 'Instance Count Per Dataset', 'dataset__name', 'cnt')} label='Instance Count Per Dataset' />
+                                    <Bar data={getBarData(dataset.owner_size, 'Dataset Size Per Owner', 'owner__username', 'size')} label='Dataset Size Per Owner' />
+                                    {/* <Bar data={getBarData(instance.owner_cnt, 'Instance Count Per Owner', 'owner__username', 'cnt')} label='Instance Count Per Owner' /> */}
                                 </div>
                             </div>
                         </div>
