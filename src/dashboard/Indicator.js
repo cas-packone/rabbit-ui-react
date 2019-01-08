@@ -20,12 +20,12 @@ const styles = {
     },
 };
 
-const Indicator = ({ icon, value, translate, classes }) => (
+const Indicator = ({ icon, label, value, translate, classes }) => (
     <div className={classes.main}>
         <CardIcon Icon={icon} bgColor="#31708f" />
         <Card className={classes.card}>
             <Typography className={classes.title} color="textSecondary">
-                {translate('pos.dashboard.space_total')}
+                {label}
             </Typography>
             <Typography variant="headline" component="h2">
                 {value}

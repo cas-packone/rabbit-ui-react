@@ -6,6 +6,8 @@ import authProvider from './authProvider';
 import dataProviderFactory from './dataProvider';
 import MyLayout from './Layout'
 import customRoutes from './routes';
+import englishMessages from 'ra-language-english';
+import chineseMessages from 'ra-language-chinese';
 
 import {
   DatasetList,
@@ -14,8 +16,15 @@ import {
   DatasetIcon,
 } from './datasets';
 
+const messages = {
+  en: englishMessages,
+  zh: chineseMessages,
+}
+
+const i18nProvider = locale => messages[locale];
+
 const App = () => (
-  <Admin appLayout={MyLayout} customRoutes={customRoutes} dashboard={Dashboard} dataProvider={dataProviderFactory('space')} authProvider={authProvider}>
+  <Admin appLayout={MyLayout} customRoutes={customRoutes} dashboard={Dashboard} dataProvider={dataProviderFactory('space')} locale="zh" i18nProvider = {i18nProvider} authProvider={authProvider}>
       <Resource name="spaces" options={{ label: 'Spaces' }} list={ListGuesser} />
       <Resource name="datasources" options={{ label: 'Sources' }} list={ListGuesser} />
       <Resource

@@ -41,9 +41,9 @@ class Dashboard extends Component {
                         <div style={styles.flex}>
                             <div style={styles.leftCol}>
                                 <div style={styles.flex}>
-                                    <Indicator icon={DollarIcon} value={space.total_cnt} />
-                                    <Indicator icon={DollarIcon} value={dataset.total_cnt} />
-                                    <Indicator icon={DollarIcon} value={instance.total_cnt} />
+                                    <Indicator icon={DollarIcon} label='Space Count' value={space.total_cnt} />
+                                    <Indicator icon={DollarIcon} label='Dataset Count' value={dataset.total_cnt} />
+                                    <Indicator icon={DollarIcon} label='Instance Count' value={instance.total_cnt} />
                                 </div>
                                 <div style={styles.flex}>
                                     <Pie data={getPublicDatasetPieData(dataset.public_size)} label='Public/Private Dataset Size' />
