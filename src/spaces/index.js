@@ -7,12 +7,13 @@ import {
     List,
     Create,
     SimpleForm,
+    RadioButtonGroupInput,
     TextField,
     TextInput,
-    NumberField,
+    CheckboxGroupInput,
     ChipField,
     DateField,
-    ReferenceField,
+    ReferenceArrayInput,
     LongTextInput,
     SelectInput,
     ReferenceInput,
@@ -69,6 +70,12 @@ export const SpaceCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="name" required />
+            <ReferenceArrayInput label="Data Engines" source="engines" reference="dataengines">
+                <CheckboxGroupInput optionText="name" optionValue="id" required />
+            </ReferenceArrayInput>
+            <ReferenceInput label="Cluster Size" source="packone.cluster.blueprint" reference="../cloud_adaptor/clusterblueprints">
+                <SelectInput optionText="name" optionValue="id" required/>
+            </ReferenceInput>
             <TextInput source="remark" />
         </SimpleForm>
     </Create>

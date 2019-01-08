@@ -50,7 +50,9 @@ const App = () => (
           create={DatasetCreate}
           icon={DatasetIcon}
         />
+      <Resource name="dataengines" />
       <Resource name="datainstances" options={{ label: 'Instances' }}  list={ListGuesser} />
+      <Resource name="../cloud_adaptor/clusterblueprints" />
   </Admin>
 );
 
