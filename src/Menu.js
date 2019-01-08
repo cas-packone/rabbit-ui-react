@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 import DefaultIcon from '@material-ui/icons/ViewList';
 import SettingsIcon from '@material-ui/icons/Settings';
+import AnalysisIcon from '@material-ui/icons/Assessment';
 import { 
     getResources,
     translate,
@@ -67,7 +68,7 @@ const Menu = ({
         <MenuItemLink
             to="/analysis"
             primaryText='Analysis'
-            leftIcon={<SettingsIcon />}
+            leftIcon={<AnalysisIcon />}
             onClick={onMenuClick}
             />
         <MenuItemLink

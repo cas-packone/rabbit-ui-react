@@ -8,13 +8,21 @@ import MyLayout from './Layout'
 import customRoutes from './routes';
 import englishMessages from 'ra-language-english';
 import chineseMessages from 'ra-language-chinese';
+import SourceIcon from '@material-ui/icons/FormatColorFill';
+import DatasetIcon from '@material-ui/icons/Folder';
 
 import {
   DatasetList,
   DatasetEdit,
   DatasetCreate,
-  DatasetIcon,
 } from './datasets';
+
+import {
+  SpaceList,
+  SpaceEdit,
+  SpaceCreate,
+  SpaceIcon,
+} from './spaces';
 
 const messages = {
   en: englishMessages,
@@ -25,8 +33,15 @@ const i18nProvider = locale => messages[locale];
 
 const App = () => (
   <Admin appLayout={MyLayout} customRoutes={customRoutes} dashboard={Dashboard} dataProvider={dataProviderFactory('space')} locale="zh" i18nProvider = {i18nProvider} authProvider={authProvider}>
-      <Resource name="spaces" options={{ label: 'Spaces' }} list={ListGuesser} />
-      <Resource name="datasources" options={{ label: 'Sources' }} list={ListGuesser} />
+      <Resource
+          name="spaces"
+          options={{ label: 'Spaces' }}
+          list={SpaceList}
+          edit={SpaceEdit}
+          create={SpaceCreate}
+          icon={SpaceIcon}
+        />
+      <Resource name="datasources" options={{ label: 'Sources' }} list={ListGuesser} icon={SourceIcon} />
       <Resource
           name="datasets"
           options={{ label: 'Datasets' }}
