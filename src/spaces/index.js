@@ -73,7 +73,7 @@ export const SpaceCreate = props => (
             <ReferenceArrayInput label="Data Engines" source="engines" reference="dataengines">
                 <CheckboxGroupInput optionText="name" optionValue="id" required />
             </ReferenceArrayInput>
-            <ReferenceInput label="Cluster Size" source="packone.cluster.blueprint" reference="../cloud_adaptor/clusterblueprints">
+            <ReferenceInput label="Cluster Blueprint" source="cluster_blueprint" reference="../cloud_adaptor/clusterblueprints">
                 <SelectInput optionText="name" optionValue="id" required/>
             </ReferenceInput>
             <TextInput source="remark" />
