@@ -22,6 +22,7 @@ import {
 } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Icon from '@material-ui/icons/Cloud';
+import StartButton from './StartButton';
 
 export const SpaceIcon = Icon;
 
@@ -44,6 +45,7 @@ export const SpaceList = withStyles(listStyles)(({ classes, ...props }) => (
             <TextField source="owner" />
             <DateField source="created_time" />
             <TextField source="remark" />
+            <StartButton />
             <EditButton />
         </Datagrid>
     </List>
