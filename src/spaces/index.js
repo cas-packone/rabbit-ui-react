@@ -45,6 +45,7 @@ export const SpaceList = withStyles(listStyles)(({ classes, ...props }) => (
             <TextField source="owner" />
             <DateField source="created_time" />
             <TextField source="remark" />
+            <TextField source="status" />
             <StartButton />
             <EditButton />
         </Datagrid>

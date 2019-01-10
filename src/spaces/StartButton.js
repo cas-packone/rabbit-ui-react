@@ -20,6 +20,7 @@ class StartButton extends Component {
            .then(() => {
                showNotification('Space started');
                push('/spaces');
+               this.setState({label: 'Started'});
            })
            .catch((e) => {
                console.error(e);
