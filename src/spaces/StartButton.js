@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import { showNotification, CREATE } from 'react-admin';
-import { push } from 'react-router-redux';
+import { showNotification, CREATE, refreshView } from 'react-admin';
 import dataProviderFactory from '../dataProvider';
 
 class StartButton extends Component {
@@ -13,14 +12,14 @@ class StartButton extends Component {
     }
     handleClick = event => {
         event.stopPropagation();
-        const { push, record, showNotification } = this.props;
+        const { record, showNotification } = this.props;
         const startOP = { packone: record.packone, operation: this.state.operation};
         this.setState({operation: this.state.operation+"ing"});
         this.setState({disabled: true});
         dataProviderFactory('packone')(CREATE, 'packoneoperations', { data: startOP })
            .then(() => {
                showNotification('Space started');
-               push('/spaces');
+               this.props.refreshView();
            })
            .catch((e) => {
                console.error(e);
@@ -40,6 +39,5 @@ StartButton.propTypes = {
 };
 
 export default connect(null, {
-    showNotification,
-    push,
+    showNotification, refreshView
 })(StartButton);

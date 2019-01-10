@@ -2,21 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import { showNotification, UPDATE } from 'react-admin';
-import { push } from 'react-router-redux';
+import { showNotification, UPDATE, refreshView } from 'react-admin';
 import dataProviderFactory from '../dataProvider';
 
 class ShareButton extends Component {
-    state = {
-        label: this.props.record.public?"Withdraw":'Share',
-    }
     handleClick = event => {
         event.stopPropagation();
-        const { push, record, showNotification } = this.props;
+        const { record, showNotification } = this.props;
         const OP = {...record, public: !record.public };
         dataProviderFactory('space')(UPDATE, 'datasets', { id: record.id, data: OP })
            .then(() => {
-                push('/datasets');
+                this.props.refreshView();
            })
            .catch((e) => {
                console.error(e);
@@ -25,7 +21,7 @@ class ShareButton extends Component {
     }
 
     render() {
-        return <Button variant="contained" color="primary" onClick={this.handleClick} > {this.state.label} </Button>;
+        return <Button variant="contained" color="primary" onClick={this.handleClick} > {this.props.record.public?"Withdraw":'Share'} </Button>;
     }
 }
 
@@ -36,6 +32,5 @@ ShareButton.propTypes = {
 };
 
 export default connect(null, {
-    showNotification,
-    push,
+    showNotification, refreshView
 })(ShareButton);

@@ -13,6 +13,7 @@ import {
     ChipField,
     DateField,
     ReferenceField,
+    BooleanField,
     LongTextInput,
     SelectInput,
     ReferenceInput,
@@ -70,9 +71,10 @@ export const DatasetEdit = props => (
     <Edit title={<DatasetTitle />} {...props}>
         <SimpleForm>
             <TextField source="name" />
-            <TextField source="uri" required />
-            <TextField source="type" required />
-            <TextField source="size" required />
+            <TextField source="uri" />
+            <TextField source="type" />
+            <TextField source="size" />
+            <BooleanField source="public" />
             <LongTextInput source="description" />
             <LongTextInput source="remedy_script" />
             <TextInput source="remark" />
