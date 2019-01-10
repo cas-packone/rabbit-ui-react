@@ -21,6 +21,7 @@ import {
 } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Icon from '@material-ui/icons/Bookmark';
+import ShareButton from './ShareButton'
 
 export const DatasetIcon = Icon;
 
@@ -52,6 +53,7 @@ export const DatasetList = withStyles(listStyles)(({ classes, ...props }) => (
             <TextField source="owner" />
             <DateField source="modified_time" />
             <TextField source="remark" />
+            <ShareButton label="Operation" />
         </Datagrid>
     </List>
 ));

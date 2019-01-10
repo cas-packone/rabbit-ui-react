@@ -15,6 +15,22 @@ export const get = (url) => {
     })
 }
 
+export const patch = (url, data) => {
+    return fetch('http://localhost:8080/api/'+url+'/', {
+        method: "PATCH",
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem('token'),
+            'Content-Type': 'application/json'
+        }),
+        body: data
+    }).then(response => {
+        if (response.status === 401 || response.status === 403) {
+            return Promise.reject({ redirectTo: '/login' });
+        }
+        return response.json();
+    })
+}
+
 export default (type, params) => {
     if (type === AUTH_LOGIN) {
         const { username, password } = params;

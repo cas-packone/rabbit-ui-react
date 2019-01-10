@@ -8,19 +8,19 @@ import dataProviderFactory from '../dataProvider';
 
 class StartButton extends Component {
     state = {
-        label: 'Start',
+        operation: this.props.record.status==='running'? 'stop':"start",
         disabled: false,
     }
-    handleClick = () => {
+    handleClick = event => {
+        event.stopPropagation();
         const { push, record, showNotification } = this.props;
-        const startOP = { packone: record.packone, operation: 'start' };
-        this.setState({label: 'Starting'});
+        const startOP = { packone: record.packone, operation: this.state.operation};
+        this.setState({operation: this.state.operation+"ing"});
         this.setState({disabled: true});
         dataProviderFactory('packone')(CREATE, 'packoneoperations', { data: startOP })
            .then(() => {
                showNotification('Space started');
                push('/spaces');
-               this.setState({label: 'Started'});
            })
            .catch((e) => {
                console.error(e);
@@ -29,7 +29,7 @@ class StartButton extends Component {
     }
 
     render() {
-        return <Button variant="contained" color="primary" onClick={this.handleClick} disabled= {this.state.disabled} > {this.state.label} </Button>;
+        return <Button variant="contained" color="primary" onClick={this.handleClick} disabled= {this.state.disabled} > {this.state.operation} </Button>;
     }
 }
 
