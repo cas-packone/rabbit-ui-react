@@ -38,7 +38,7 @@ const SpaceFilter = (props) => (
 
 export const SpaceList = withStyles(listStyles)(({ classes, ...props }) => (
     <List {...props} sort={{ field: 'name', order: 'ASC' }} filters={<SpaceFilter />}>
-        <Datagrid>
+        <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />
             <BooleanField label="Enabled" source="enabled" />
@@ -47,7 +47,6 @@ export const SpaceList = withStyles(listStyles)(({ classes, ...props }) => (
             <TextField source="remark" />
             <TextField source="status" />
             <StartButton />
-            <EditButton />
         </Datagrid>
     </List>
 ));
@@ -65,6 +64,11 @@ export const SpaceEdit = props => (
         <SimpleForm>
             <TextField source="name" />
             <TextInput source="remark" />
+            <BooleanField label="Enabled" source="enabled" />
+            <TextField source="owner" />
+            <DateField source="created_time" />
+            <TextField source="remark" />
+            <TextField source="status" />
         </SimpleForm>
     </Edit>
 );

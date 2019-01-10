@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Admin, Resource, ListGuesser } from 'react-admin';
+import { Admin, Resource, ListGuesser, ShowGuesser } from 'react-admin';
 import { Dashboard } from './dashboard';
 import authProvider from './authProvider';
 import dataProviderFactory from './dataProvider';
@@ -41,7 +41,7 @@ const App = () => (
           create={SpaceCreate}
           icon={SpaceIcon}
         />
-      <Resource name="datasources" options={{ label: 'Sources' }} list={ListGuesser} icon={SourceIcon} />
+      <Resource name="datasources" options={{ title: "Source", label: 'Sources' }} list={ListGuesser}  icon={SourceIcon} />
       <Resource
           name="datasets"
           options={{ label: 'Datasets' }}
