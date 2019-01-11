@@ -23,6 +23,7 @@ import {
 import withStyles from '@material-ui/core/styles/withStyles';
 import Icon from '@material-ui/icons/Bookmark';
 import ShareButton from './ShareButton'
+import LoadButton from './LoadButton'
 
 export const DatasetIcon = Icon;
 
@@ -55,6 +56,7 @@ export const DatasetList = withStyles(listStyles)(({ classes, ...props }) => (
             <DateField source="modified_time" />
             <TextField source="remark" />
             <ShareButton label="Operation" />
+            <LoadButton />
         </Datagrid>
     </List>
 ));
