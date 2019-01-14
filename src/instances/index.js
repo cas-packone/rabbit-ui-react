@@ -16,9 +16,6 @@ import {
     Filter,
 } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Icon from '@material-ui/icons/Bookmark';
-import ShareButton from './ShareButton'
-import LoadButton from './LoadButton'
 
 const listStyles = {
     name: { padding: '0 12px 0 25px' },
@@ -58,7 +55,6 @@ export const InstanceList = withStyles(listStyles)(({ classes, ...props }) => (
             <TextField source="remark" />
             <DateField source="created_time" />
             <NumberField source="status" />
-            <ShareButton />
         </Datagrid>
     </List>
 ));
