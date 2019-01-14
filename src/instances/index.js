@@ -16,6 +16,7 @@ import {
     Filter,
 } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
+import StartButton from './StartButton'
 
 const listStyles = {
     name: { padding: '0 12px 0 25px' },
@@ -55,6 +56,7 @@ export const InstanceList = withStyles(listStyles)(({ classes, ...props }) => (
             <TextField source="remark" />
             <DateField source="created_time" />
             <NumberField source="status_name" />
+            <StartButton label="Operation" />
         </Datagrid>
     </List>
 ));
