@@ -79,7 +79,7 @@ export const InstanceEdit = props => (
 export const InstanceCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextField source="name" required />
+            <TextInput source="name" required />
             <ReferenceInput source="space" reference="spaces" required >
                 <SelectInput optionText="name" />
             </ReferenceInput>
