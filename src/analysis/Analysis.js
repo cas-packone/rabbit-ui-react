@@ -1,82 +1,57 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import { translate, changeLocale, Title } from 'react-admin';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import withStyles from '@material-ui/core/styles/withStyles';
-import compose from 'recompose/compose';
-import { changeTheme } from './actions';
+import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
-const styles = {
-    label: { width: '10em', display: 'inline-block' },
-    button: { margin: '1em' },
-};
-
-const Configuration = ({
-    classes,
-    theme,
-    locale,
-    changeTheme,
-    changeLocale,
-    translate,
-}) => (
-    <Card>
-        <Title title={translate('pos.configuration')} />
-        <CardContent>
-            <div className={classes.label}>{translate('pos.theme.name')}</div>
-            <Button
-                variant="raised"
-                className={classes.button}
-                color={theme === 'light' ? 'primary' : 'default'}
-                onClick={() => changeTheme('light')}
-            >
-                {translate('pos.theme.light')}
-            </Button>
-            <Button
-                variant="raised"
-                className={classes.button}
-                color={theme === 'dark' ? 'primary' : 'default'}
-                onClick={() => changeTheme('dark')}
-            >
-                {translate('pos.theme.dark')}
-            </Button>
-        </CardContent>
-        <CardContent>
-            <div className={classes.label}>{translate('pos.language')}</div>
-            <Button
-                variant="raised"
-                className={classes.button}
-                color={locale === 'en' ? 'primary' : 'default'}
-                onClick={() => changeLocale('en')}
-            >
-                en
-            </Button>
-            <Button
-                variant="raised"
-                className={classes.button}
-                color={locale === 'fr' ? 'primary' : 'default'}
-                onClick={() => changeLocale('fr')}
-            >
-                fr
-            </Button>
-        </CardContent>
-    </Card>
-);
-
-const mapStateToProps = state => ({
-    theme: state.theme,
-    locale: state.i18n.locale,
-});
-
-export default compose(
-    connect(
-        mapStateToProps,
-        {
-            changeLocale,
-            changeTheme,
-        }
-    ),
-    translate,
-    withStyles(styles)
-)(Configuration);
+function TabContainer(props) {
+    return (
+      <Typography component="div" style={{ padding: 8 * 3 }}>
+        {props.children}
+      </Typography>
+    );
+  }
+  
+  TabContainer.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
+  
+  const styles = theme => ({
+    root: {
+      flexGrow: 1,
+      backgroundColor: theme.palette.background.paper,
+    },
+  });
+  
+  class SimpleTabs extends React.Component {
+    state = {
+      value: 0,
+    };
+  
+    handleChange = (event, value) => {
+      this.setState({ value });
+    };
+  
+    render() {
+      const { classes } = this.props;
+      const { value } = this.state;
+  
+      return (
+        <div className={classes.root}>
+            <Tabs value={value} onChange={this.handleChange}>
+              <Tab label="Notebook" />
+              <Tab label="PiFlow" />
+            </Tabs>
+          {value === 0 && <TabContainer><iframe src="http://10.0.88.41:8080" width="100%" height="1080px" /></TabContainer>}
+          {value === 1 && <TabContainer><iframe src="http://10.0.88.41:8080" width="100%" height="1080px" /></TabContainer>}
+        </div>
+      );
+    }
+  }
+  
+  SimpleTabs.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+  export default withStyles(styles)(SimpleTabs);
