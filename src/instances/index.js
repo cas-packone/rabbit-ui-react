@@ -54,7 +54,7 @@ export const InstanceList = withStyles(listStyles)(({ classes, ...props }) => (
             <TextField source="uri_elected" />
             <TextField source="remark" />
             <DateField source="created_time" />
-            <NumberField source="status" />
+            <NumberField source="status_name" />
         </Datagrid>
     </List>
 ));
