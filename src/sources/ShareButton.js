@@ -10,7 +10,7 @@ class ShareButton extends Component {
         event.stopPropagation();
         const { record, showNotification } = this.props;
         const OP = {...record, public: !record.public };
-        dataProviderFactory('space')(UPDATE, 'datasets', { id: record.id, data: OP })
+        dataProviderFactory('space')(UPDATE, 'datasources', { id: record.id, data: OP })
            .then(() => {
                 this.props.refreshView();
            })

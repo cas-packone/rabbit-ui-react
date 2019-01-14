@@ -8,13 +8,19 @@ import MyLayout from './Layout'
 import customRoutes from './routes';
 import englishMessages from 'ra-language-english';
 import chineseMessages from 'ra-language-chinese';
-import SourceIcon from '@material-ui/icons/FormatColorFill';
-import DatasetIcon from '@material-ui/icons/Folder';
+
+import {
+  SourceList,
+  SourceEdit,
+  SourceCreate,
+  SourceIcon,
+} from './sources';
 
 import {
   DatasetList,
   DatasetEdit,
   DatasetCreate,
+  DatasetIcon,
 } from './datasets';
 
 import {
@@ -47,7 +53,14 @@ const App = () => (
           create={SpaceCreate}
           icon={SpaceIcon}
         />
-      <Resource name="datasources" options={{ title: "Source", label: 'Sources' }} list={ListGuesser}  icon={SourceIcon} />
+      <Resource
+          name="datasources"
+          options={{ title: "Source", label: 'Sources' }}
+          list={SourceList}
+          edit={SourceEdit}
+          create={SourceCreate}
+          icon={SourceIcon}
+        />
       <Resource
           name="datasets"
           options={{ label: 'Datasets' }}

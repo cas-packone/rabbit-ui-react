@@ -3,7 +3,6 @@ import {
     translate,
     Datagrid,
     Edit,
-    EditButton,
     List,
     Create,
     SimpleForm,
@@ -21,7 +20,7 @@ import {
     NullableBooleanInput
 } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Icon from '@material-ui/icons/Bookmark';
+import Icon from '@material-ui/icons/Folder';
 import ShareButton from './ShareButton'
 import LoadButton from './LoadButton'
 
