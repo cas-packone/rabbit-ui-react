@@ -24,6 +24,12 @@ import {
   SpaceIcon,
 } from './spaces';
 
+import {
+  InstanceList,
+  InstanceEdit,
+  InstanceCreate,
+} from './instances';
+
 const messages = {
   en: englishMessages,
   zh: chineseMessages,
@@ -50,8 +56,14 @@ const App = () => (
           create={DatasetCreate}
           icon={DatasetIcon}
         />
+      <Resource
+          name="datainstances"
+          options={{ label: 'Instances' }}
+          list={InstanceList}
+          edit={InstanceEdit}
+          create={InstanceCreate}
+        />
       <Resource name="dataengines" />
-      <Resource name="datainstances" options={{ label: 'Instances' }}  list={ListGuesser} />
       <Resource name="../cloud_adaptor/clusterblueprints" />
   </Admin>
 );
