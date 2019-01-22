@@ -43,8 +43,8 @@ function TabContainer(props) {
               <Tab label="Notebook" />
               <Tab label="PiFlow" />
             </Tabs>
-          {value === 0 && <TabContainer><iframe src="http://10.0.88.41:8080" width="100%" height="1080px" /></TabContainer>}
-          {value === 1 && <TabContainer><iframe src="http://10.0.88.41:8080" width="100%" height="1080px" /></TabContainer>}
+          {value === 0 && <TabContainer><iframe src="http://10.0.88.41:8080" width="100%" height="1000px" /></TabContainer>}
+          {value === 1 && <TabContainer><iframe src="http://10.0.88.41:8006/piflowwebui/" width="100%" height="1000px" /></TabContainer>}
         </div>
       );
     }
