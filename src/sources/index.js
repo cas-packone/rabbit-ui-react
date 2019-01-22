@@ -33,7 +33,7 @@ const SourceFilter = (props) => (
 );
 
 export const SourceList = withStyles(listStyles)(({ classes, ...props }) => (
-    <List {...props} sort={{ field: 'name', order: 'ASC' }} filters={<SourceFilter />}>
+    <List title="Data Sources" {...props} sort={{ field: 'name', order: 'ASC' }} filters={<SourceFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />

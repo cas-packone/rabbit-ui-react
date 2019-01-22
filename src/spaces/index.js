@@ -37,7 +37,7 @@ const SpaceFilter = (props) => (
 );
 
 export const SpaceList = withStyles(listStyles)(({ classes, ...props }) => (
-    <List {...props} sort={{ field: 'name', order: 'ASC' }} filters={<SpaceFilter />}>
+    <List title="Data Spaces" {...props} sort={{ field: 'name', order: 'ASC' }} filters={<SpaceFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />

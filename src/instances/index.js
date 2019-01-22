@@ -38,7 +38,7 @@ const InstanceFilter = (props) => (
 );
 
 export const InstanceList = withStyles(listStyles)(({ classes, ...props }) => (
-    <List {...props} sort={{ field: 'name', order: 'ASC' }} filters={<InstanceFilter />}>
+    <List title="Data Instances" {...props} sort={{ field: 'name', order: 'ASC' }} filters={<InstanceFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />

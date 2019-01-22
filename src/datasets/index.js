@@ -41,7 +41,7 @@ const DatasetFilter = (props) => (
 );
 
 export const DatasetList = withStyles(listStyles)(({ classes, ...props }) => (
-    <List {...props} sort={{ field: 'name', order: 'ASC' }} filters={<DatasetFilter />}>
+    <List title="Datasets" {...props} sort={{ field: 'name', order: 'ASC' }} filters={<DatasetFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />
