@@ -4,6 +4,8 @@ import Tab from '@material-ui/core/Tab';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
+import Card from '@material-ui/core/Card';
+import { Title } from 'react-admin';
 
 function TabContainer(props) {
     return (
@@ -38,14 +40,17 @@ function TabContainer(props) {
       const { value } = this.state;
   
       return (
-        <div className={classes.root}>
-            <Tabs value={value} onChange={this.handleChange}>
-              <Tab label="Notebook" />
-              <Tab label="PiFlow" />
-            </Tabs>
-          {value === 0 && <TabContainer><iframe src="http://10.0.88.41:8080" width="100%" height="1000px" /></TabContainer>}
-          {value === 1 && <TabContainer><iframe src="http://10.0.88.41:8006/piflowwebui/" width="100%" height="1000px" /></TabContainer>}
-        </div>
+        <Card>
+          <Title title='Analysis' />
+          <div className={classes.root}>
+              <Tabs value={value} onChange={this.handleChange}>
+                <Tab label="Notebook" />
+                <Tab label="PiFlow" />
+              </Tabs>
+            {value === 0 && <TabContainer><iframe src="http://10.0.88.41:8080" width="100%" height="1100px" scrolling="no" frameborder="0"/></TabContainer>}
+            {value === 1 && <TabContainer><iframe src="http://10.0.88.41:8006/piflowwebui/" width="100%" height="1100px" scrolling="no" frameborder="0" /></TabContainer>}
+          </div>
+        </Card>
       );
     }
   }
