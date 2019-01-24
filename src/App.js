@@ -8,6 +8,10 @@ import MyLayout from './Layout'
 import customRoutes from './routes';
 import englishMessages from 'ra-language-english';
 import chineseMessages from 'ra-language-chinese';
+import { createMuiTheme } from '@material-ui/core/styles';
+import pink from '@material-ui/core/colors/pink';
+import red from '@material-ui/core/colors/red';
+
 
 import {
   SourceList,
@@ -42,6 +46,14 @@ const messages = {
 }
 
 const i18nProvider = locale => messages[locale];
+
+// const theme = createMuiTheme({
+//   palette: {
+//     type: 'light', // Switching the dark mode on is a single property value change.
+//     primary: pink,
+//     secondary: red,
+//   },
+// });
 
 const App = () => (
   <Admin appLayout={MyLayout} customRoutes={customRoutes} dashboard={Dashboard} dataProvider={dataProviderFactory('space')} locale="zh" i18nProvider = {i18nProvider} authProvider={authProvider}>

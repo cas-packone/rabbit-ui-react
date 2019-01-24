@@ -36,16 +36,19 @@ const SpaceFilter = (props) => (
     </Filter>
 );
 
+const rowStyle = (record, index) => ({
+    backgroundColor: record.status==='running'? '#c8e6c9' : '#d9e3f0',
+});
+
 export const SpaceList = withStyles(listStyles)(({ classes, ...props }) => (
     <List title="Data Spaces" {...props} sort={{ field: 'name', order: 'ASC' }} filters={<SpaceFilter />}>
-        <Datagrid rowClick="edit">
+        <Datagrid rowClick="edit" rowStyle={rowStyle}>
             <TextField source="id" />
             <TextField source="name" />
             <BooleanField label="Enabled" source="enabled" />
             <TextField source="owner" />
             <DateField source="created_time" />
             <TextField source="remark" />
-            <TextField source="status" />
             <StartButton label="Operation" />
         </Datagrid>
     </List>
