@@ -7,7 +7,7 @@ import dataProviderFactory from '../dataProvider';
 
 class StartButton extends Component {
     state = {
-        operation: this.props.record.status==='running'? 'stop':"start",
+        operation: this.props.record.status_name==='running'? 'stop':"start",
         disabled: false,
     }
     handleClick = event => {
