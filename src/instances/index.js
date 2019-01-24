@@ -22,6 +22,10 @@ const listStyles = {
     name: { padding: '0 12px 0 25px' },
 };
 
+const rowStyle = (record, index) => ({
+    backgroundColor: record.status_name==='running'? '#c8e6c9' : '#d9e3f0',
+});
+
 const InstanceFilter = (props) => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
@@ -39,7 +43,7 @@ const InstanceFilter = (props) => (
 
 export const InstanceList = withStyles(listStyles)(({ classes, ...props }) => (
     <List title="Data Instances" {...props} sort={{ field: 'name', order: 'ASC' }} filters={<InstanceFilter />}>
-        <Datagrid rowClick="edit">
+        <Datagrid rowClick="edit" rowStyle={rowStyle}>
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="owner" />
@@ -55,7 +59,6 @@ export const InstanceList = withStyles(listStyles)(({ classes, ...props }) => (
             <TextField source="uri_elected" />
             <TextField source="remark" />
             <DateField source="created_time" />
-            <NumberField source="status_name" />
             <StartButton label="Operation" />
         </Datagrid>
     </List>
