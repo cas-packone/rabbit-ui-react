@@ -2,6 +2,7 @@
   "name": "rabbit-ui-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "chart.js": "^1.1.1",
     "prop-types": "^15.6.2",
